@@ -18,8 +18,8 @@ class BussinessServiceImpl{
     public void buy(){
         System.out.println("开始buy");
         try {
-            restForWhile();
-//            EnventBusUtil.invoke(this,"restForWhile",null);
+            restForWhile();//同步处理
+//            EnventBusUtil.invoke(this,"restForWhile",null);//异步处理
         }catch (Exception e){
             e.printStackTrace();
         }
