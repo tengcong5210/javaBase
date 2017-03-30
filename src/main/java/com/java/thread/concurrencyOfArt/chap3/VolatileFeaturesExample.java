@@ -24,31 +24,46 @@ public class VolatileFeaturesExample {
     }
 
     public static void main(String[] args){
-        System.out.print("开始");
+        System.out.println("开始");
         final  VolatileFeaturesExample vfe=new VolatileFeaturesExample();
         Thread t1=new Thread(new Runnable() {
             public void run() {
                 vfe.getAndIncrement();
                 System.out.println("t1:"+vfe.get());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
         Thread t2=new Thread(new Runnable() {
             public void run() {
                 vfe.getAndIncrement();
                 System.out.println("t2:"+vfe.get());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
         Thread t3=new Thread(new Runnable() {
             public void run() {
                 vfe.getAndIncrement();
                 System.out.println("t3:"+vfe.get());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         t1.start();
         t2.start();
         t3.start();
-        System.out.print("结束");
+        System.out.println("结束");
 
 
     }

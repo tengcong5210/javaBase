@@ -3,7 +3,6 @@ package com.java.designPattern.singleton;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
-import java.util.Properties;
 
 /**
  * @author tengcongcong
@@ -32,11 +31,11 @@ public class TestSingleton {
         /*EnumSingleton es1=EnumSingleton.INSTANCE;
         EnumSingleton es2=EnumSingleton.INSTANCE;
         System.out.println(es1==es2);*/
-        String proFilePath="stone-oss.properties";
+        String proFilePath= "src/main/resources/stone-oss.properties";
         EnumSingleton.INSTANCE.getProperties(proFilePath);
         System.out.println(EnumSingleton.INSTANCE.getProperty("oss.signUrlExpires"));
 
-        String proFilePath2="log4j.properties";
+        String proFilePath2= "src/main/resources/log4j.properties";
         EnumSingleton.INSTANCE.getProperties(proFilePath2);
         System.out.println(EnumSingleton.INSTANCE.getProperty("log4j.rootLogger"));
     }
