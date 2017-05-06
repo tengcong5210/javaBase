@@ -1,13 +1,10 @@
 package com.java.dataType;
 
-import static org.junit.Assert.*;
+import com.java.dataType.bean.IntegerBeanTest;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import org.junit.Test;
-
-import com.java.dataType.bean.IntegerBeanTest;
 
 
 /**
@@ -19,7 +16,7 @@ import com.java.dataType.bean.IntegerBeanTest;
  */
 public class IntegerTest {
     @Test
-    public void test(String[] args) {
+    public void test() {
         Integer i = 10; //装箱 底层jvm会自动调用Integer.valueOf();【-128-127】
         int ii = i; //拆箱 底层jvm会自动掉intValue 
 
@@ -79,5 +76,25 @@ public class IntegerTest {
 		}
 		
 	}
+
+    /**
+     * 两个Integer类型(或是int和Integer)变量的比较
+     * equals的方法参数是Object
+     */
+	@Test
+	public void testIntegerCompare(){
+	    Integer var1=10;//jvm进行装箱 Integer.valueOf();
+        Integer var2=10;
+//        System.out.println("比较结果1:"+(var1.equals(var2)));
+
+        //var3传给equals方法时，会进行类型提升（即自动装箱）
+        int var3=10;
+        System.out.println("比较结果2:"+(var1.equals(var3)));
+
+        //通过此验证可以得知进行了类型提升
+        Object obj=var3;
+        System.out.println("比较结果3:"+(obj instanceof Integer));
+
+    }
 }
 

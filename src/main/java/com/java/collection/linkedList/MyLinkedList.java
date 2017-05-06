@@ -13,9 +13,9 @@ import java.util.Queue;
 public class MyLinkedList {
     /**
      * peek()和element()方法 返回队头,不移除
-     * 。但当队列没有值时peek()方法返回Null,而element方法返回NoSuchElementException 异常；
-     * poll（）和remove
-     * （）方法讲移除并返回队头，poll在队列为空时返回Null,remove会抛出NoSuchElementException异常
+     * 但当队列没有值时peek()方法返回Null,而element方法返回NoSuchElementException 异常；
+     * poll()和remove()方法移除并返回队头，
+     * poll在队列为空时返回Null,remove会抛出NoSuchElementException异常
      * 
      * @param queue
      */
