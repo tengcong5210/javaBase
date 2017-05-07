@@ -20,5 +20,12 @@ public class LinkedJunitTest {
         linkedList.add(1);
         linkedList.add(2);
     }
+    @Test
+    public void testCustomLinked(){
+        CustomLinked<String> customLinked=new CustomLinked<String>();
+        customLinked.add("a");
+        customLinked.add("b");
+        customLinked.add("c");
+    }
 
 }
