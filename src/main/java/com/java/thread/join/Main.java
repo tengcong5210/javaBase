@@ -2,6 +2,9 @@ package com.java.thread.join;
 
 import java.util.Date;
 
+/**
+ * Join方法等待当前线程结束（消亡）。Waits for this thread to die.
+ */
 public class Main {
     public static void main(String[] args) {
         DataSourcesLoader dsLoader = new DataSourcesLoader();
