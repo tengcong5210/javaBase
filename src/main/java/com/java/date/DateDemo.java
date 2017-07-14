@@ -1,13 +1,13 @@
 package com.java.date;
 
+import org.junit.Test;
+
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
-import org.junit.Test;
 
 public class DateDemo {
 
@@ -93,10 +93,16 @@ public class DateDemo {
      */
     @Test
     public void testDateCha() {
-        Date loanApplyDate = DateUtil.parseDate("20160528000000", DateUtil.NOMARK_DATETIME_PATTERN);//借款申请日期
-        Date amountInvalidDate = DateUtil.parseDate("20160628000000", DateUtil.NOMARK_DATETIME_PATTERN);//额度有效期
-        int chaDay = DateUtil.getDateDistance(loanApplyDate, amountInvalidDate, DateUtil.ACCURACY_DAY);//日期相差天数
-        System.out.println("testDateCha-Result:" + chaDay);
+        Date date1 = DateUtil.parseDate("2017-08-10", DateUtil.ZH_CN_DATE_PATTERN);//借款申请日期
+        Date date2 = DateUtil.parseDate("2018-06-10", DateUtil.ZH_CN_DATE_PATTERN);//额度有效期
+        int chaYear = DateUtil.getDateDistance(date1, date2, DateUtil.ACCURACY_YEAR);//日期相差天数
+        System.out.println("testDateCha-Result:" + chaYear);
+        int compareYear=1;
+        if(chaYear<compareYear){
+            System.out.println("true");
+        }else{
+            System.out.println("flase");
+        }
     }
 
     /**

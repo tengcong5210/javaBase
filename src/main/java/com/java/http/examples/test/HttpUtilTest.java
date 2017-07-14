@@ -1,19 +1,16 @@
 package com.java.http.examples.test;
 
-import static org.junit.Assert.*;
-
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.java.http.examples.HttpHeader;
+import com.java.http.examples.HttpMethods;
+import com.java.http.examples.HttpUtil;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 import org.junit.Test;
 
-import com.alibaba.fastjson.JSONObject;
-import com.java.http.examples.HttpHeader;
-import com.java.http.examples.HttpMethods;
-import com.java.http.examples.HttpUtil;
+import java.net.InetAddress;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HttpUtilTest {
 	/**
@@ -124,6 +121,31 @@ public class HttpUtilTest {
 		String url="http://www.shitou.com/active/mrxu";
 		String result=HttpUtil.send(url, HttpMethods.GET, null, null, "utf-8");
 	    System.out.println("测试结果="+result);
+	}
+
+	/**
+	 * 模拟网贷天眼注册
+	 * @throws Exception
+	 */
+    @Test
+	public void testNetLoanEye()throws Exception{
+		String url="http://localhost:8080/netLoanEye/memberRegister.do";
+		Map<String, String> parasMap=new HashMap<String, String>();
+		parasMap.put("data", "mobile=18909121636&username=aaaa&send_time=2017-05-23&sid=11111122");
+		String result=HttpUtil.send(url, HttpMethods.POST, parasMap, null, "utf-8");
+		System.out.println("测试结果="+result);
+	}
+
+	/**
+	 * 模拟投之家创建新用户
+	 *
+	 * @throws Exception
+	 */
+	@Test
+	public void testTzjCreateUser()throws Exception{
+		InetAddress address = InetAddress.getLocalHost();//获取的是本地的IP地址 //PC-20140317PXKX/192.168.0.121
+		String hostAddress = address.getHostAddress(); //192.168.0.121
+		System.out.println("主机地址:"+hostAddress);
 	}
 	
 }

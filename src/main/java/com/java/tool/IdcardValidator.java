@@ -347,8 +347,7 @@ public class IdcardValidator {
   
     /** 
      * 将和值与11取模得到余数进行校验码判断 
-     *  
-     * @param checkCode 
+     *
      * @param sum17 
      * @return 校验位 
      */  
@@ -410,11 +409,10 @@ public class IdcardValidator {
   
     public static void main(String[] args) throws Exception {  
           
-        String idcard15 = "";  
-        String idcard18 = "";  
+        String idcard15 = "440606196904184538";
         IdcardValidator iv = new IdcardValidator();  
         boolean flag = false;  
-        flag = iv.isValidate18Idcard(idcard18);  
+        flag = iv.isValidate18Idcard(idcard15);
         System.out.println(flag);  
   
         flag = iv.isValidate15Idcard(idcard15);  
@@ -424,7 +422,7 @@ public class IdcardValidator {
         flag = iv.isValidate18Idcard(iv.convertIdcarBy15bit(idcard15));  
         System.out.println(flag);  
   
-        System.out.println(iv.isValidatedAllIdcard(idcard18));  
+        System.out.println(iv.isValidatedAllIdcard(idcard15));
   
     }  
 }  
