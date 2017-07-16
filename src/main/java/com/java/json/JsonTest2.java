@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.java.json.bean.LoanApply;
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -82,11 +83,13 @@ public class JsonTest2 {
         list2.add(loanApply3);
         list2.add(loanApply4);
 
-
+        // step1:根据产品code和机构code查询还款计划属性配置，并得配置的根json的key和子json的key。
+        // 这边要增加字段，属性级别(1.2,3) 根据属性级别进行升序，并主装成Map<String,List<T>> 的map
         Map<String,List<LoanApply>> map=new LinkedHashMap<String, List<LoanApply>>();
         map.put("data",list1);
         map.put("paymentPlanDetail",list2);
 
+        //step2:遍历map,得到key，value
         String jsonStr;
         for(Map.Entry<String,List<LoanApply>> entry:map.entrySet()){
             String proType=entry.getKey();
@@ -98,7 +101,13 @@ public class JsonTest2 {
             char[] strChar=jsonStr.substring(0,1).toCharArray();
             char fisrtChar=strChar[0];
             if(fisrtChar=='{'){
-                JSONObject jsonOb=JSON.parseObject(jsonStr);
+                JSONObject rootJson=JSON.parseObject(jsonStr);
+                if(!CollectionUtils.isEmpty(loanApplyList)){
+                    for(LoanApply apply:loanApplyList){
+
+                    }
+                }
+
             }else if(fisrtChar=='['){
                 JSONArray jsonArray= JSON.parseArray(jsonStr);
                 System.out.println("结束");
