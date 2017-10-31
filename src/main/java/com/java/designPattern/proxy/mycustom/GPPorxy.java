@@ -1,0 +1,19 @@
+package com.java.designPattern.proxy.mycustom;
+
+/**
+ * 生成代理对象的代码
+ * @author tengcongcong
+ * @create 2017-09-30 16:55
+ * @Version 1.0
+ **/
+public class GPPorxy {
+
+    public static Object newProxyInstance(GPClassLoader classLoader,Class<?>[] interfaces,GPInvocationHandler h){
+        //1.生成源代码
+        //2.将生成的源代码输出到磁盘，保存为.java文件
+        //3.编译源代码，并且生成.class文件
+        //4.将class文件中的内容，动态动态加载到JVM中来
+        //5.返回被被代理后的代理对象。
+        return null;
+    }
+}
