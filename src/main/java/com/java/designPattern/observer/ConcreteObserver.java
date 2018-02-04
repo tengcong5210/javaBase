@@ -17,7 +17,6 @@ public class ConcreteObserver implements Observer {
         this.observerName = observerName;
     }
 
-    @Override
     public void update(Subject subject) {
         System.out.println(observerName + "状态变更了：" + ((ConcreteSubject) subject).getSubjectState());
     }
