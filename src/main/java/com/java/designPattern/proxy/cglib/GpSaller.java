@@ -23,7 +23,7 @@ public class GpSaller implements MethodInterceptor {
         //把父类设置给谁？
         //告诉cglib,生成的子类需要继承哪个父类
         enhancer.setSuperclass(clazz);
-        //设置回调。。回调什么意思？
+        //设置回调。。回调什么意思？ 指的生成的代理类会回调下面的intercept方法
         enhancer.setCallback(this);
         //step1；生成源代码
         //step2: 编译成Class文件
