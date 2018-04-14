@@ -57,6 +57,22 @@ public class HashmapTest {
 
     }
 
+    @Test
+    public void testRepeatPut(){
+        //实例化map时，会实例化HashEntry数组，默认容量16，负载因子0.75f
+        Map<String,String> map=new HashedMap();
+        //put方法的源码：
+        //1.根据key计算hashcode
+        //2.然后根据hashcode和HashEntry数组的长度 计算key在数组中的索引
+        //3.根据查找索引在数组中的entry
+        //4.判断entry是否存在，若存在，继续判断key的hashcode和key的值是否相等，相等，取出key对应的老值，不等，则往map中添加新元素
+        //                     若不存在，则往map中添加新元素
+        //5.map中的元素entry的定义：HashEntry
+        map.put("aaa","1111");
+        map.put("bbb","2222");
+        map.put("aaa","3333");
+    }
+
 
 
 }
