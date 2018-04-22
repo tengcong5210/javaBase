@@ -38,6 +38,7 @@ public class ReferenceTest {
 
     @Test
     public void testPhantomReference()throws Exception{
+        Object obj=new Object();
         //虚引用
         String wstr="张三";
         PhantomReference<String> wsf=new PhantomReference<String>(wstr,null);

@@ -3,9 +3,8 @@ package com.java.collection.map;
 import org.apache.commons.collections.map.HashedMap;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class HashmapTest {
@@ -38,37 +37,18 @@ public class HashmapTest {
         map.put(5,"apply_limit_m");
         map.put(6,"province");
         map.put(7,"contractName");
-        map.put(8,"contractNo");
-        map.put(9,"marriage");
-        map.put(10,"sex");
 
         Iterator<Map.Entry<Integer,Object>> it=map.entrySet().iterator();
-        Map<String,List<PropertiesDTO>> mapProList=new HashedMap();
         while (it.hasNext()){
             Map.Entry<Integer,Object> entry =it.next();
             Integer key=entry.getKey();
-            Object val=entry.getValue();
-            //根据val、org、pro去查询属性配置  properties
-            // if(properties==null){map.remove}
-            // else{
-            // String proType=properties.getProType
-            //
-            //
-            //
-            //
-            //
-            //
-            // }
-            this.getProDTO(val);
-
-
             if(key%2==1){
                 System.out.println("delete key: "+key);
                 it.remove();
             }
         }
 
-        System.out.println("-------最终的map的元素遍历：");
+        System.out.println("-------\n\t最终的map的元素遍历：");
         for(Map.Entry<Integer, Object> entry:map.entrySet()){
             int k=entry.getKey();
             Object v=entry.getValue();
@@ -81,7 +61,7 @@ public class HashmapTest {
     @Test
     public void testRepeatPut(){
         //实例化map时，会实例化HashEntry数组，默认容量16，负载因子0.75f
-        Map<String,String> map=new HashedMap();
+        Map<String,String> map=new HashMap<String, String>();
         //put方法的源码：
         //1.根据key计算hashcode
         //2.然后根据hashcode和HashEntry数组的长度 计算key在数组中的索引
@@ -94,75 +74,6 @@ public class HashmapTest {
         map.put("aaa","3333");
     }
 
-    private void getProDTO(Object val) {
-        String key=(String) val;
-
-        List<PropertiesDTO> list=this.getProDTOList();
-        for(PropertiesDTO pro:list){
-            if(key.equals(pro.getProkey())){
-
-            }
-        }
-
-    }
-
-    private List<PropertiesDTO> getProDTOList(){
-        List<PropertiesDTO> proDTOList=new ArrayList<PropertiesDTO>();
-        PropertiesDTO pro1=new PropertiesDTO();
-        pro1.setProkey("contractName");
-        pro1.setProType("contracts");
-
-        PropertiesDTO pro2=new PropertiesDTO();
-        pro2.setProkey("contractNo");
-        pro2.setProType("contracts");
-
-        PropertiesDTO pro3=new PropertiesDTO();
-        pro3.setProkey("marriage");
-        pro3.setProType("pros");
-
-        PropertiesDTO pro4=new PropertiesDTO();
-        pro4.setProkey("sex");
-        pro4.setProType("pros");
-
-        proDTOList.add(pro1);
-        proDTOList.add(pro2);
-        proDTOList.add(pro3);
-        proDTOList.add(pro4);
-        return proDTOList;
-    }
 
 
-
-}
-
-
-class PropertiesDTO{
-
-    private String proType;
-    private String prokey;
-    private String proName;
-
-    public String getProType() {
-        return proType;
-    }
-
-    public void setProType(String proType) {
-        this.proType = proType;
-    }
-
-    public String getProkey() {
-        return prokey;
-    }
-
-    public void setProkey(String prokey) {
-        this.prokey = prokey;
-    }
-
-    public String getProName() {
-        return proName;
-    }
-
-    public void setProName(String proName) {
-        this.proName = proName;
-    }
 }

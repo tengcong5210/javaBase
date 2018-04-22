@@ -1,5 +1,6 @@
 package com.java.collection.linkedList;
 
+import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -26,6 +27,16 @@ public class LinkedJunitTest {
         customLinked.add("a");
         customLinked.add("b");
         customLinked.add("c");
+        System.out.println(JSON.toJSONString(customLinked));
+    }
+    @Test
+    public void testMyLinkedList1(){
+        MyLinkedList1<String> linkedList1=new MyLinkedList1<String>();
+        linkedList1.add("aaa");
+        linkedList1.add("bbb");
+        linkedList1.add("ccc");
+        linkedList1.add("ddd");
+        System.out.println(JSON.toJSONString(linkedList1));
     }
 
 }

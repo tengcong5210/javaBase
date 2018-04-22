@@ -12,6 +12,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
+ * jdk动态代理
  * 生成代理对象的代码
  * @author tengcongcong
  * @create 2017-09-30 16:55

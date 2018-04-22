@@ -1,11 +1,9 @@
 package com.java.String;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.net.URLEncoder;
 import java.util.regex.Pattern;
-
-import org.junit.Test;
 
 /**
  * 验证字符串

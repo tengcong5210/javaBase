@@ -48,7 +48,7 @@ public class CustomLinked<E> {
         Node<E> next;
         //前一个节点
         Node<E> prev;
-
+        //创建一个节点，要指定前一个节点，节点元素，和下一个节点
         Node(Node<E> prev,E element,Node<E> next){
             this.item=element;
             this.next=next;

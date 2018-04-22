@@ -130,6 +130,12 @@ public class DateDemo {
     	long endtime = Long.parseLong(new java.text.DecimalFormat("0").format(time));
     	System.out.println("endTime="+endtime);
 	}
+	@Test
+	public void testDateAddx(){
+        Date startDate=DateUtil.parseDate("2017-06-04");
+        Date restDate=DateUtil.adjustDay(startDate,100);
+        System.out.println("restDate="+DateUtil.formatDateDefault(restDate));
+    }
     
     private void getDateMonth(Date date) {
         int month = date.getMonth() + 1;
