@@ -49,6 +49,25 @@ public class ValidateString {
 		boolean bool=Pattern.matches(regex, chinaName);
 		System.out.println("result="+bool);
 	}
+
+	/**
+	 * 年利率的正则
+	 * https://www.cnblogs.com/elleniou/archive/2012/07/31/2617312.html
+	 * @throws Exception
+	 */
+	@Test
+	public void testRate() throws Exception {
+		//String chinaName="2.0000%";
+		String chinaName="1000.01%";
+		//String regex="^\\d+(\\.\\d)?\\d{0,1}%$";
+		//String regex= "^\\d+\\.?\\d*\\%?$";
+		String regex= "^[0-9]+(.[0-9]{1,2})?%$";
+		boolean bool=Pattern.matches(regex, chinaName);
+		System.out.println("result="+bool);
+	}
+
+
+
 	  /**
      * 判断单独字符是否是中文
      *
