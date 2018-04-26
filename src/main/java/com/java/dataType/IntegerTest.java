@@ -24,8 +24,11 @@ public class IntegerTest {
         Integer in2 = 100;
         Integer in3 = 200;
         Integer in4 = 200;
+        Integer in5=new Integer(20);
+        Integer in6=new Integer(20);
         System.out.println(in == in2);
         System.out.println(in3 == in4);
+        System.out.println(in5 == in6);
         Long l = 10L;
         Long l2 = 10L;
         Long l3 = 200L;
@@ -46,6 +49,14 @@ public class IntegerTest {
         Boolean b4 = true;
         System.out.println(b1 == b2);
         System.out.println(b3 == b4);
+
+
+        String str1="123";
+        String str2="123";
+        String str3=new String("123");
+        String str4=new String("123");
+        System.out.println("str1==str2:"+(str1==str2));
+        System.out.println("str3==str4:"+(str3==str4));
     }
 
     @Test
