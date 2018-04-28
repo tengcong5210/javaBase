@@ -20,4 +20,13 @@ public class TestFormat {
         IdcardInfoExtractor ie = new IdcardInfoExtractor(idcard);
         System.out.println(ie.toString());
     }
+
+    /**
+     * 字符串去除空格
+     */
+    @Test
+    public void testRepalce(){
+        String str = "[0,   0.25  )";
+        System.out.println(str.replaceAll("\\s",""));
+    }
 }
