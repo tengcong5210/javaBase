@@ -1,5 +1,7 @@
 package com.java.forT;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,6 +150,40 @@ public class ForTest {
         //        forInitOrder();
         //        forBreak();
 //        printTrigon();
-    	testForeachWithNull();
+    	//testForeachWithNull();
+        testContinueToOut();
+    }
+    //多层循环跳出
+    public static void testContinueToOut(){
+        List<Integer> out=new ArrayList<Integer>();
+        out.add(1);
+        out.add(2);
+        out.add(3);
+
+        List<Integer> inner=new ArrayList<Integer>();
+        inner.add(1);
+        inner.add(2);
+        inner.add(3);
+        inner.add(4);
+
+        List<Integer> batch=new ArrayList<Integer>();
+
+        circle:
+        for(int i=0;i<out.size();i++){
+            System.out.println("外层i=:"+out.get(i));
+
+            for(int j=0;j<inner.size();j++){
+                System.out.println("内层j=:"+inner.get(j));
+                if(inner.get(j).intValue()==out.get(i).intValue()){
+                    System.out.println("内层外层相等");
+                 continue circle;
+                }
+            }
+
+            batch.add(out.get(i));
+
+        }
+
+        System.out.println("xxxxx:"+JSON.toJSONString(batch));
     }
 }
