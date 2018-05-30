@@ -30,10 +30,10 @@ public class CountTask extends RecursiveTask<Integer> {
             int middle=(start+end)/2;
             CountTask leftTask=new CountTask(start,middle);
             CountTask rightTask=new CountTask(middle+1,end);
-            //执行子任务
+            //执行子任务 fork方法调用时，ForkJoinWorkerThread的pushTask方法异步的执行这个任务，然后立即返回结果。
             leftTask.fork();
             rightTask.fork();
-            //等待子任务执行完，并得到其结果
+            //等待子任务执行完，并得到其结果  join方法阻塞当前并等待获取结果。
             int leftResult=leftTask.join();
             int rightResult=rightTask.join();
             //合并子任务
