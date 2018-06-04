@@ -10,11 +10,14 @@ import org.junit.Test;
 public class JavaGetPathUtil {
 
     /**
-     * 获取当前类的所在工程路径;
+     *
      */
     @Test
     public void testGetPath(){
+        // 缺少类加载器，获取xxx类经编译后的xxx.class路径  获取当前类的所在工程路径;
         System.out.println(this.getClass().getResource("").getPath());
+        //获取src资源文件编译后的路径（即classes路径）
+        System.out.println(this.getClass().getClassLoader().getResource("").getPath());
     }
 
     /**
