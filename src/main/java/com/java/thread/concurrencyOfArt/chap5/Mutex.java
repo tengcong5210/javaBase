@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- * 使用队列同步器实现独占锁
+ * 使用队列同步器实现独占锁，不支持重入；ReentrantLock 而支持重入
  * Created by ibm on 2017/4/19.
  */
 public class Mutex implements Lock {
