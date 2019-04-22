@@ -1,5 +1,6 @@
 package com.java.String;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
 import java.net.URLEncoder;

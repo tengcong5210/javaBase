@@ -17,13 +17,13 @@ public class Page {
 	 */
 	@Test
 	public void testPage() throws Exception {
-		int totalCount=100;//定义总记录数
+		int totalCount=101;//定义总记录数
 		int factor=5;//每次处理因子
 		int size=totalCount/factor;//分多少次执行
 		if(totalCount%factor!=0){
 			size++;
 		}
-		
+
 		for(int i=1;i<=size;i++){
 			System.out.println("********size="+i);
 			int start=(i-1)*factor;

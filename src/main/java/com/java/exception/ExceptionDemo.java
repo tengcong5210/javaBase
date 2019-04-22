@@ -38,4 +38,14 @@ public class ExceptionDemo {
         LOGGER.info("testTryCatch====结束");//如果异常后，该处代码不会执行
         return;
     }
+    @Test
+    public void testNewException(){
+        LOGGER.info("测试创建异常对象");
+        try {
+            Exception exception=new Exception();
+        }catch (Exception e){
+            LOGGER.error("测试创建异常对象",e);
+            e.printStackTrace();
+        }
+    }
 }

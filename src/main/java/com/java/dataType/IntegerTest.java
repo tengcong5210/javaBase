@@ -95,8 +95,8 @@ public class IntegerTest {
 	@Test
 	public void testIntegerCompare(){
 	    Integer var1=10;//jvm进行装箱 Integer.valueOf();
-        Integer var2=10;
-//        System.out.println("比较结果1:"+(var1.equals(var2)));
+        Integer var2=11;
+        System.out.println("比较结果1:"+(var1==var2));
 
         //var3传给equals方法时，会进行类型提升（即自动装箱）
         int var3=10;
