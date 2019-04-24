@@ -6,9 +6,9 @@ import com.java.javaInAction.AppleGreenPredicate;
 import com.java.javaInAction.ApplePredicate;
 import com.java.javaInAction.AppleWeightPredicate;
 import com.java.javaInAction.bean.Apple;
-import org.apache.poi.ss.formula.functions.T;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -48,10 +48,26 @@ public class FilterApples {
         List<Apple> redApples3=filter(inventroy,(Apple a)-> "red".equals(a.getColor()));
 
         System.out.println("红色苹果:"+ JSON.toJSONString(redApples3));
+
         //三选大于10的数据
         List<Integer> numbers=Arrays.asList(1,4,39,26,34,8,15);
+
         List<Integer> integers=filterT(numbers,(Integer i)->i>10);
+
         System.out.println("大于10的数据:"+ JSON.toJSONString(integers));
+        //匿名类
+        integers.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
+        System.out.println("大于10的数据排序:"+ JSON.toJSONString(integers));
+        //lambda 表达式
+        integers.sort((Integer o1,Integer o2)->o2.compareTo(o1));
+
+        System.out.println("大于10的数据排序lambda:"+ JSON.toJSONString(integers));
 
     }
 
