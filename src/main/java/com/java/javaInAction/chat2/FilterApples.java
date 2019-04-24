@@ -6,9 +6,11 @@ import com.java.javaInAction.AppleGreenPredicate;
 import com.java.javaInAction.ApplePredicate;
 import com.java.javaInAction.AppleWeightPredicate;
 import com.java.javaInAction.bean.Apple;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @创建人 tengcc
@@ -46,8 +48,10 @@ public class FilterApples {
         List<Apple> redApples3=filter(inventroy,(Apple a)-> "red".equals(a.getColor()));
 
         System.out.println("红色苹果:"+ JSON.toJSONString(redApples3));
-
-
+        //三选大于10的数据
+        List<Integer> numbers=Arrays.asList(1,4,39,26,34,8,15);
+        List<Integer> integers=filterT(numbers,(Integer i)->i>10);
+        System.out.println("大于10的数据:"+ JSON.toJSONString(integers));
 
     }
 
@@ -107,6 +111,23 @@ public class FilterApples {
         for(Apple apple:inventroy){
             if(predicate.test(apple)){
                 result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 泛型过滤
+     * @param list
+     * @param p
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> filterT(List<T> list, Predicate<T> p){
+        List<T> result=Lists.newArrayList();
+        for(T e:list){
+            if(p.test(e)){
+                result.add(e);
             }
         }
         return result;
