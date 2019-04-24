@@ -3,8 +3,7 @@ package com.java.javaInAction.chat1;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.java.javaInAction.chat1.bean.Currency;
-import com.java.javaInAction.chat1.bean.Transaction;
+import com.java.javaInAction.bean.Transaction;
 
 import java.util.Arrays;
 import java.util.List;

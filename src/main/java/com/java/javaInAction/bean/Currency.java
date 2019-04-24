@@ -1,4 +1,4 @@
-package com.java.javaInAction.chat1.bean;
+package com.java.javaInAction.bean;
 
 import java.io.Serializable;
 

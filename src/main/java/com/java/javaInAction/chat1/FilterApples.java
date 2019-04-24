@@ -2,7 +2,7 @@ package com.java.javaInAction.chat1;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
-import com.java.javaInAction.chat1.bean.Apple;
+import com.java.javaInAction.bean.Apple;
 
 import java.util.Arrays;
 import java.util.List;
