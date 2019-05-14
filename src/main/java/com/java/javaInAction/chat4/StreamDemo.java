@@ -2,6 +2,7 @@ package com.java.javaInAction.chat4;
 
 
 import com.alibaba.fastjson.JSON;
+import com.java.javaInAction.bean.WeightPo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +69,9 @@ public class StreamDemo {
                 .filter(i-> i%2==0)
                 .distinct()
                 .forEach(System.out::println);
+        //5.1 计算numbers集合之和
+        int sum=numbers.stream().reduce(Integer::sum).orElse(0);
+        System.out.println("计算集合之和:"+sum);
 
 
         //6. 跳过超过300卡路里的头两道菜.
@@ -81,7 +85,20 @@ public class StreamDemo {
                 .filter(d->d.getType()==Dish.Type.MEAT)
                 .limit(2)
                 .collect(toList());
+
+
+        //7、计算集合中的值相加
+        List<WeightPo> weightPos=Arrays.asList(new WeightPo(10,1),
+                new WeightPo(1,5),
+                new WeightPo(2,2),
+                new WeightPo(1,1));
+       /* List<Integer> ss=weightPos.stream().map(o->o.getWeight()*o.getScore()).collect(toList());
+        System.out.println("计算集合中的值相加2222:"+ss.stream().reduce(Integer::sum));*/
+        //10 5 4 1
+        Integer sums=weightPos.stream().map(o->o.getWeight()*o.getScore()).reduce(Integer::sum).orElse(0);
+        System.out.println("计算集合中的值相加:"+sums);
     }
 
 
 }
+
