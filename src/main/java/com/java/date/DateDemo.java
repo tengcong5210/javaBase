@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -146,5 +148,20 @@ public class DateDemo {
     public void testGetYear() throws Exception {
         Date loanApplyDate = DateUtil.parseDate("20140806193900", DateUtil.NOMARK_DATETIME_PATTERN);//借款申请日期
         System.out.println("当前年份:" + DateUtil.getYear(loanApplyDate));
+    }
+
+    @Test
+    public void testDateCha2()throws Exception{
+        LocalDateTime now = LocalDateTime.now();
+        Thread.sleep(60000);
+        LocalDateTime end = LocalDateTime.now();
+        Duration duration = Duration.between(now,end);
+        long chaMillis=duration.toMillis();
+        System.out.println("相差毫秒："+chaMillis);
+        BigDecimal chaSends=new BigDecimal(chaMillis).divide(new BigDecimal(1000));
+        System.out.println("相差毫秒："+chaMillis+";相差秒:"+chaSends);
+
+
+
     }
 }

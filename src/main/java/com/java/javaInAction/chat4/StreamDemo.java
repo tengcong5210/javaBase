@@ -6,6 +6,7 @@ import com.java.javaInAction.bean.WeightPo;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -32,6 +33,13 @@ public class StreamDemo {
 
         );
 
+        List<Dish> result=menu.stream()
+                .filter(d->d.getType()==Dish.Type.MEAT)
+                .filter(d->d.getCalories()>700)
+                .limit(12)
+                .collect(toList());
+
+        result.stream().forEach(o->{System.out.println("结果："+JSON.toJSONString(o));});
         //1.需求 赛选出热量大于300的前三个菜品
         List<String> threeHighCaloricDishNames=menu.stream()
                 .filter((Dish d)->d.getCalories()>300)
@@ -88,12 +96,27 @@ public class StreamDemo {
 
 
         //7、计算集合中的值相加
-        List<WeightPo> weightPos=Arrays.asList(new WeightPo(10,1),
-                new WeightPo(1,5),
-                new WeightPo(2,2),
-                new WeightPo(1,1));
-       /* List<Integer> ss=weightPos.stream().map(o->o.getWeight()*o.getScore()).collect(toList());
-        System.out.println("计算集合中的值相加2222:"+ss.stream().reduce(Integer::sum));*/
+        List<WeightPo> weightPos=Arrays.asList(new WeightPo("aaa",0,6),
+                new WeightPo("bbb",0,5),
+                new WeightPo("ccc",30,2),
+                new WeightPo("ddd",40,1));
+        //A60 B100 C60 D40
+        //A0 B0 C30 D40
+        // A60 B160 C220 D260
+        //[0,0] [0,0],[0,30],[30,70]
+        List<Integer> ss=weightPos.stream().map(o->o.getWeight()).collect(toList());
+        //System.out.println("计算集合中的值相加2222:"+ss.stream().reduce(Integer::sum));
+        int weightSum=ss.stream().reduce(Integer::sum).orElse(0);
+        int raNumber=new Random().ints(1,1,weightSum).findFirst().getAsInt();
+        System.out.println("weightSum="+weightSum+";raNumber="+raNumber);
+        int min=0;
+        for(WeightPo po:weightPos){
+            int max=min+po.getWeight();
+            if(raNumber>=min&&raNumber<=max){
+                System.out.println("得到权重里的数据："+po.getSpId()+";ranumer:"+raNumber+";min="+min+";max:"+max);
+            }
+            min=max+1;
+        }
         //10 5 4 1
         Integer sums=weightPos.stream().map(o->o.getWeight()*o.getScore()).reduce(Integer::sum).orElse(0);
         System.out.println("计算集合中的值相加:"+sums);

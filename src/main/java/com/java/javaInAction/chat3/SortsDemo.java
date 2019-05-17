@@ -15,10 +15,10 @@ import java.util.List;
 public class SortsDemo {
 
     public static void main(String[] args) {
-        List<Apple> inventory= Arrays.asList(new Apple("gree",10),
-                new Apple("yellow",12),
-                new Apple("red",9),
-                new Apple("blue",15));
+        List<Apple> inventory= Arrays.asList(new Apple("gree",10,3.5),
+                new Apple("yellow",12,4.5),
+                new Apple("red",9,2.5),
+                new Apple("blue",15,5.5));
         //1. 通过创建comparator实例进行排序
         inventory.sort(new AppleComparator());
 
@@ -43,6 +43,16 @@ public class SortsDemo {
 
         //5. 方法引用  ：可以被看做仅仅调用特定方法的Lambda的一种快捷写法. 倒序
         inventory.sort(Comparator.comparing(Apple::getWeight).reversed());
-        System.out.println("倒序结果:"+ JSON.toJSONString(inventory));
+        inventory.forEach(a->System.out.println("倒序结果:"+JSON.toJSONString(a)));
+
+        List<Apple> inventory2= Arrays.asList(new Apple("gree",10,3.5),
+                new Apple("yellow",12,4.5),
+                new Apple("red",9,2.5),
+                new Apple("blue",15,5.5));
+
+        //6. 根据单价倒叙
+        inventory2.sort(Comparator.comparing(Apple::getPrice).reversed());
+        inventory2.forEach(a->System.out.println("价格排序:"+JSON.toJSONString(a)));
+
     }
 }

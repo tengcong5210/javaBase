@@ -20,9 +20,9 @@ import java.util.function.Predicate;
 public class FilterApples {
 
     public static void main(String[] args) {
-        List<Apple> inventroy= Arrays.asList(new Apple("green",90),
-                new Apple("red",120),
-                new Apple("yellow",57));
+        List<Apple> inventroy= Arrays.asList(new Apple("green",90,1.0),
+                new Apple("red",120,2.5),
+                new Apple("yellow",57,3.8));
 
         //绿色苹果
         List<Apple> greeApples=filterGreenApples(inventroy);

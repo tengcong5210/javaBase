@@ -14,9 +14,12 @@ public class Apple implements Serializable {
 
     private Integer weight;
 
-    public Apple(String color, Integer weight) {
+    private Double price;
+
+    public Apple(String color, Integer weight,Double price) {
         this.color = color;
         this.weight = weight;
+        this.price=price;
     }
 
     public String getColor() {
@@ -33,5 +36,13 @@ public class Apple implements Serializable {
 
     public void setWeight(Integer weight) {
         this.weight = weight;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
