@@ -4,8 +4,11 @@ import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.text.StrSubstitutor;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSONObject;
@@ -87,30 +90,16 @@ public class StringFromt {
 	}
 	@Test
 	public void isRepeatUrl(){
-		String url="http://dbei-file.oss-cn-hangzhou.aliyuncs.com/%E6%88%BF%E5%B1%8B%E4%B9%B0%E5%8D%96%E8%B4%B7/%E5%80%9F%E6%AC%BE%E4%BA%BA%E4%BF%A1%E6%81%AF/%E8%BA%AB%E4%BB%BD%E8%AF%81/f5ea6c55-9d2d-4d0f-9f39-96018b26aa76.png?Expires=1480405621&OSSAccessKeyId=STS.JWoAjL2Jwbf9G8Tb2nKRLjK7g&Signature=k9beHt6EvpImjw4Hb1D2ByLv7Vo%3D&security-token=CAESmwQIARKAAS/yqI1Dc/IoB0%2BSqFfo38J5Bobk6KxGxeNbyF4Uf4GptEnV/njIfOtKvr9LWMoj23vTUcBtmtuQDqoyc/w9bj0kGw9tuRo4aX0J1TrTtX/sa%2BCXRUWV4GLS7U1T8NxNKND4JaPgvvAhAJbbFcCdl2XbJ5AOc/P2P%2BT6/4ZjihBZGh1TVFMuSldvQWpMMkp3YmY5RzhUYjJuS1JMaks3ZyISMzEyNzI4ODc5MDg4MjM3MzYzKglhbGljZS0wMDEwo6ib%2BYorOgZSc2FNRDVC4AEKATEa2gEKBUFsbG93EoIBCgxBY3Rpb25FcXVhbHMSBkFjdGlvbhpqCg1vc3M6R2V0T2JqZWN0Cg1vc3M6UHV0T2JqZWN0ChBvc3M6RGVsZXRlT2JqZWN0Cg1vc3M6TGlzdFBhcnRzChhvc3M6QWJvcnRNdWx0aXBhcnRVcGxvYWQKD29zczpMaXN0T2JqZWN0cxJMCg5SZXNvdXJjZUVxdWFscxIIUmVzb3VyY2UaMAoXYWNzOm9zczoqOio6ZGJlaS1maWxlLyoKFWFjczpvc3M6KjoqOmRiZWktZmlsZUoQMTI2MTM5NzIwODYwNDkwOVIFMjY4NDJaD0Fzc3VtZWRSb2xlVXNlcmAAahIzMTI3Mjg4NzkwODgyMzczNjNyG2FsaXl1bm9zc3Rva2VuZ2VuZXJhdG9ycm9sZXjtwajkvueeAg%3D%3D";
-		url=url.substring(url.indexOf("Expires="));
-		System.out.println("新的Url:"+url);
-		String expires=url.substring(url.indexOf("=")+1, url.indexOf("&"));
-		System.out.println(expires);
-		//url中的过期时间
-		Long exp=Long.valueOf(expires)*1000L;
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String d = format.format(exp);
-		System.out.println("d="+d);
-		System.out.println("exp:"+exp);
-		//当前时间
-		Long newTime=new Date().getTime();
-		System.out.println("newDateLime:"+newTime);
-		System.out.println("new:"+format.format(newTime));
-		
-		//当前时间和过期时间差
-		Long cha=exp-newTime;
-		System.out.println("cha:"+cha);
-		if(cha>0){
-			System.out.println("相差多少分钟："+(cha/1000L));
-		}
-		
-		
-		
+
+		Map valuesMap = new HashMap();
+		valuesMap.put("aaa", "张三");
+		valuesMap.put("bbb", "修改前端页面");
+		valuesMap.put("ccc", "00009");
+		valuesMap.put("ddd", "www.baidu.com");
+    	String str="亲，${aaa}向你提了一个需求${bbb}，需求编号是：${ccc}，请及时评估，详情请见${ddd}";
+		StrSubstitutor sub = new StrSubstitutor(valuesMap);
+		sub.setEnableSubstitutionInVariables(true);
+		String resolvedString = sub.replace(str);
+		System.out.println("字符串格式化:"+resolvedString);
 	}
 }
